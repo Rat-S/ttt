@@ -1,0 +1,95 @@
+---
+layout: default
+is_post: true
+---
+<!-- Twitter Conversion -->
+<script type="text/javascript">
+  twttr.conversion.trackPid('l4rua');
+  var gaIntervalId = setInterval(function () {
+    var scrollTop = document.documentElement.scrollTop;
+    var scrollHeight = document.body.scrollHeight;
+
+    if (scrollTop < scrollHeight / 10) return;
+
+    ga('send', {
+      hitType: 'event',
+      eventCategory: 'article',
+      eventAction: 'read',
+      eventLabel: location.pathname
+    });
+
+    clearInterval(gaIntervalId);
+  }, 20000);
+</script>
+
+<noscript>
+  <img height="1" width="1" style="display:none;" alt="" src="https://analytics.twitter.com/i/adsct?txn_id=l4rua&p_id=Twitter" />
+  <img height="1" width="1" style="display:none;" alt="" src="//t.co/i/adsct?txn_id=l4rua&p_id=Twitter" />
+</noscript>
+
+<article itemscope itemtype="http://schema.org/BlogPosting" itemprop="mainEntity">
+  <link itemprop="mainEntityOfPage" href="https://auth0.com{{ site.baseurl }}{{page.url | replace:'index.html',''}}" />
+  {% if page.updated %}
+    <meta itemprop="dateModified" content="{{ page.updated }}">
+  {% endif %}
+  {% include banner_post.html %}
+
+  {% include utility_bar.html %}
+
+  <div id="container" class="container">
+    <div class="row sticky-container">
+      <section class="col-md-8 content-column">
+
+        <main class="blog-post blog-single">
+          <div class="inner">
+            <div class="entry-content js-entry-content" itemprop="articleBody">
+              {% include experiment_disclaimer.html %}
+              {{ content }}
+            </div>
+            {% include reply_buttons.html %}
+          </div>
+        </main>
+        <div class="bottom-module">
+          {% include custom-try-banner.html %}
+          <div class="try-banner" style="display:none;">
+              <a href="https://auth0.com/signup" data-amp-replace="CLIENT_ID" data-amp-addparams="anonId=CLIENT_ID(cid-scope-cookie-fallback-name)" class="signup-button btn btn-success   btn-lg">Use Auth0 for Free</a>
+          </div>
+        </div>
+        <div id="disqus_thread"></div>
+      </section>
+      <aside class="col-md-4 sidebar-column" data-sticky-padding="90" itemscope itemtype="http://schema.org/WPSideBar">
+        {% include newsletter.html %}
+        {% include popular_posts.html%}
+        {% include widget_guest_author.html %}
+      </aside>
+    </div>
+    <div itemscope itemtype="https://schema.org/Organization" itemprop="publisher">
+      <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+        <meta itemprop="url" content="https://i.cloudup.com/BngR4GufYd-3000x3000.png"/>
+        <meta itemprop="width" content="100"/>
+        <meta itemprop="height" content="37"/>
+      </div>
+      <meta itemprop="name" content="Auth0">
+    </div>
+
+    <script>
+
+        var disqus_shortname = 'auth0blog'; // required: replace example with your forum shortname
+
+        var disqus_config = function () {
+            this.page.url = location.href.split('?')[0];
+        };
+
+        (function() {  // REQUIRED CONFIGURATION VARIABLE: EDIT THE SHORTNAME BELOW
+            var d = document, s = d.createElement('script');
+
+            s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+  </div>
+</article>
